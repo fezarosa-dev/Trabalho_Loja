@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-bt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .menu{
+        font-size: 10px;
+    }
+</style>
+</head>
+<body>
+    <div class="menu">
+        <% for(i = 0; i < tabela.rowCount; i++) {
+            %>   
+                <a href="/ListarProdutos/<%=tabela.rows[i].codigo%>" target="principal">
+                    <h1><%=tabela.rows[i].nome %></h1>
+            </a>    
+        <%    
+            }
+        %>
+    </div>
+
+</body>
+</html>
