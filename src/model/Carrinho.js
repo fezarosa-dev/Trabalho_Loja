@@ -1,15 +1,15 @@
 module.exports = class Carrinho {
     #itens; // Array para armazenar os itens do carrinho
-    
+
     constructor() {
         this.#itens = []; // Inicializa o array de itens
     }
-    
+
     // Método para adicionar um produto ao carrinho
     adicionarProduto(codigoProduto, qtdeAddProduto, precoProduto) {
         // Verifica se o produto já está no carrinho
         const produtoExistente = this.#itens.find(item => item.codigoProduto === codigoProduto);
-        
+
         if (produtoExistente) {
             // Se o produto já existe, atualiza a quantidade
             produtoExistente.qtdeAddProduto += qtdeAddProduto;

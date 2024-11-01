@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "main": "server.js",
     "scripts": {
-      "start": "nodemon --watch . --ext js --delay 0 server.js & browser-sync start --proxy 'localhost:3000' --files '**/*.html, **/*.css, **/*.js'",
+      "start": "nodemon --watch . --ext js --delay 0 server.js",
       "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
