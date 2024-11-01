@@ -1,5 +1,12 @@
 {
+<<<<<<< HEAD
   "watch": ["."],
   "ext": "js",
   "delay": "0" 
+=======
+  "watch": ["server.js"],
+  "ext": "js json",
+  "ignore": ["node_modules/"],
+  "exec": "node server.js"
+>>>>>>> 5c5e9673b7680848aa735c814e491f5a52f2dbaa
 }
