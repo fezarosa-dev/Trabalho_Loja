@@ -1,37 +1,21 @@
 {
-<<<<<<< HEAD
-  "dependencies": {
-=======
-  "name": "trabalho_loja",
-  "version": "1.0.0",
-  "main": "server.js",
-  "scripts": {
-    "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "body-parser": "^1.20.3",
->>>>>>> 5c5e9673b7680848aa735c814e491f5a52f2dbaa
-    "ejs": "^3.1.10",
-    "express": "^4.21.1",
-    "express-session": "^1.18.1",
-    "nodemon": "^3.1.7",
-<<<<<<< HEAD
-    "pg": "^8.13.1"
-  },
-"scripts": {
-  "start": "nodemon --watch . --ext js --delay 0 server.js & browser-sync start --proxy 'localhost:3000' --files '**/*.html, **/*.css, **/*.js'"
-}
-
-
-
-=======
-    "pg": "^8.13.0",
-    "trabalho_loja": "file:"
+    "name": "trabalho_loja",
+    "version": "1.0.0",
+    "main": "server.js",
+    "scripts": {
+      "start": "nodemon --watch . --ext js --delay 0 server.js & browser-sync start --proxy 'localhost:3000' --files '**/*.html, **/*.css, **/*.js'",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+      "body-parser": "^1.20.3",
+      "ejs": "^3.1.10",
+      "express": "^4.21.1",
+      "express-session": "^1.18.1",
+      "nodemon": "^3.1.7",
+      "pg": "^8.13.1"
+    }
   }
->>>>>>> 5c5e9673b7680848aa735c814e491f5a52f2dbaa
-}

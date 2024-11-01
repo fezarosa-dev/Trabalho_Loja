@@ -40,7 +40,7 @@ app.post('/login', async function (req, res) {
         if (cliente != null) {
             session.usuario = cliente
             res.send(login + " logado com sucesso")
-        } 
+        }
         else {
             session.usuario = null
             res.send("Erro no login/senha")
@@ -71,7 +71,7 @@ app.post('/cadastro', async function (req, res) {
             let codigo = await dao.gravar(logar)
             res.send(`Você foi cadastrado com código ${codigo}, bem-vindo! ${logar.login}`)
         }
-    } 
+    }
     catch (erro) {
         console.log(`Deu erro aqui ;( -> ${erro}`)
     }
@@ -87,7 +87,7 @@ app.get('/ListarProdutos/:departamento', async function(req, res) {
     res.render('produto', {tabela})
 });
 
-/* ARRUMAR
+
 app.post('/add', async function(req, res) {
     let login = session.usuario;
     let add = new Carrinho()
@@ -116,7 +116,6 @@ app.post('/add', async function(req, res) {
     }
 });
 
-*/
 
 app.listen(3000, function (erro) {
     if (erro) {
