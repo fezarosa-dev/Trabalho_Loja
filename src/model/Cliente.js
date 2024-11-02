@@ -1,36 +1,62 @@
-module.exports = class Pessoa {
+module.exports = class Cliente {
     #codigo
     #nome
     #login
     #senha
-    constructor(){
+
+    constructor() {
         this.#codigo = -1
         this.#nome = ""
         this.#login = ""
         this.#senha = ""
     }
-    set codigo(x){
-        this.#codigo=x
+
+    // Getters e Setters com validações
+    set codigo(x) {
+        if (typeof x === 'number' && x >= 0) {
+            this.#codigo = x
+        } else {
+            throw new Error("Código inválido.")
+        }
     }
-    get codigo(){
+
+    get codigo() {
         return this.#codigo
     }
-    set nome(x){
-        this.#nome=x
+
+    set nome(x) {
+        if (typeof x === 'string' && x.trim() !== '') {
+            this.#nome = x.trim()
+        } else {
+            throw new Error("Nome inválido.")
+        }
     }
-    get nome(){
+
+    get nome() {
         return this.#nome
     }
-    set login(x){
-        this.#login=x
+
+    set login(x) {
+        if (typeof x === 'string' && x.trim() !== '') {
+            this.#login = x.trim()
+        } else {
+            throw new Error("Login inválido.")
+        }
     }
-    get login(){
+
+    get login() {
         return this.#login
     }
-    set senha(x){
-        this.#senha=x
+
+    set senha(x) {
+        if (typeof x === 'string' && x.trim() !== '') {
+            this.#senha = x
+        } else {
+            throw new Error("Senha inválida.")
+        }
     }
-    get senha(){
+
+    get senha() {
         return this.#senha
     }
 }

@@ -1,13 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Loja de Itens Variados</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        iframe {
+            border: none; /* Remove bordas do iframe */
+        }
+
+        .topo {
+            height: 9%; /* Altura do topo */
+            width: 100%; /* Largura do topo */
+        }
+
+        .menu {
+            width: 20%; /* Largura do menu */
+            height: 900px; /* Altura do menu */
+            float: left; /* Alinha o menu à esquerda */
+        }
+
+        .principal {
+            width: 79%; /* Largura do conteúdo principal */
+            height: 900px; /* Altura do conteúdo principal */
+            float: left; /* Alinha o conteúdo principal à esquerda */
+        }
+    </style>
 </head>
+
 <body>
-    <iframe  scrolling="no" src="template/topo.html" name="topo" width="100%" height="9%"></iframe>
-    <iframe src="/menu" name="menu" width="10%" height="900" > </iframe>
-    <iframe src="" name="principal" width="89%" height="900" > </iframe>
+    <iframe class="topo" scrolling="no" src="template/topo.html" name="topo"></iframe>
+    <iframe class="menu" src="/menu" name="menu"></iframe>
+    <iframe class="principal" src="template/pr.html" name="principal"></iframe>
 </body>
+
 </html>

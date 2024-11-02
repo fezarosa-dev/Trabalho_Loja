@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+</head>
+<body>
+    <h1>Carrinho de Compras</h1>
+    <% if (carrinho.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Preço</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% carrinho.forEach(item => { %>
+                    <tr>
+                        <td><%= item.nomeProduto %></td>
+                        <td>
+                            <form action="/carrinho/atualizar" method="post">
+                                <input type="hidden" name="codigoProduto" value="<%= item.codigoProduto %>">
+                                <input type="number" name="novaQuantidade" value="<%= item.qtdeAddProduto %>" min="1">
+                                <button type="submit">Atualizar</button>
+                            </form>
+                        </td>
+                        <td>R$ <%= item.precoProduto %></td>
+                        <td>
+                            <form action="/carrinho/remover" method="post">
+                                <input type="hidden" name="codigoProduto" value="<%= item.codigoProduto %>">
+                                <button type="submit">Remover</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>Seu carrinho está vazio.</p>
+    <% } %>
+</body>
+</html>
