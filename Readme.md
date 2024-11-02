@@ -28,6 +28,7 @@ Este projeto é uma loja online desenvolvida em Node.js, HTML, CSS e PostgreSQL.
    ```
 3. **Configuração do Banco de Dados**:
    - Crie um banco de dados PostgreSQL chamado `node`.
+   - Configure as informações nessesarias no arquivo [loginBD.sql](/SQL/loginBD.json) que esta na pasta SQL
    - Execute os seguintes comandos SQL para criar as tabelas necessárias:
    ```sql
    CREATE TABLE cliente (
@@ -66,7 +67,7 @@ Este projeto é uma loja online desenvolvida em Node.js, HTML, CSS e PostgreSQL.
    ```bash
    npm start 
    ```
-5. **Acesse a aplicação**:
+6. **Acesse a aplicação**:
    Abra o navegador e acesse `http://localhost:3000`.
 
 ## Contribuição
