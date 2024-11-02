@@ -23,7 +23,7 @@ app.set("views", __dirname + "/src/view");
 
 // Configuração de sessão
 app.use(session({
-    secret: 'trabalhomuitofacil',
+    secret: 'trabalhomuitofacil001',
     resave: true,
     saveUninitialized: true
 }));
@@ -109,49 +109,25 @@ app.get('/ListarProdutos/:departamento', async function(req, res) {
 // Rota para adicionar ao carrinho
 app.post('/add', verificaAutenticacao, async function(req, res) {
     const usuario = req.session.usuario;
+    const carrinho = req.session.carrinho || []; // Verifique se o carrinho existe
 
-    const carrinho = req.session.carrinho || []; // Mantém o carrinho existente
-    const novoProduto = new Carrinho();
-    novoProduto.codigoProduto = req.body.Addcodigo;
-    novoProduto.qtdeAddProduto = req.body.Addqtde;
-    novoProduto.precoProduto = req.body.AddPreco;
+    const novoCarrinho = new Carrinho();
+    novoCarrinho.codigoProduto = parseInt(req.body.ADDcodigo); // Use o nome correto do campo
+    novoCarrinho.qtdeAddProduto = parseInt(req.body.ADDqtde); // Use o nome correto do campo
 
-    // Adiciona o novo produto ao carrinho
-    carrinho.push(novoProduto);
-    req.session.carrinho = carrinho;
+    // Verifique se os dados são válidos
+    if (!isNaN(novoCarrinho.codigoProduto) && !isNaN(novoCarrinho.qtdeAddProduto) && novoCarrinho.qtdeAddProduto > 0) {
+        // Adicione o novo item ao carrinho
+        carrinho.push(novoCarrinho);
+        req.session.carrinho = carrinho; // Atualize a sessão
 
-    console.log({
-        codigoProduto: novoProduto.codigoProduto,
-        qtdeAddProduto: novoProduto.qtdeAddProduto,
-        precoProduto: novoProduto.precoProduto
-    });
-
-    res.send('Produto adicionado ao carrinho com sucesso!');
+        console.log(`Produto adicionado: ${novoCarrinho.codigoProduto}, Quantidade: ${novoCarrinho.qtdeAddProduto}`);
+        res.send('Produto adicionado ao carrinho com sucesso!'); // Resposta ao cliente
+    } else {
+        res.send('Dados inválidos!'); // Resposta de erro
+    }
 });
 
-// Rota para remover produto do carrinho
-app.post('/carrinho/remover', verificaAutenticacao, (req, res) => {
-    const codigoProduto = req.body.codigoProduto;
-    let carrinho = req.session.carrinho || [];
-
-    req.session.carrinho = carrinho.filter(item => item.codigoProduto !== codigoProduto);
-    res.redirect('/carrinho');
-});
-
-// Rota para atualizar quantidade do produto no carrinho
-app.post('/carrinho/atualizar', verificaAutenticacao, (req, res) => {
-    const { codigoProduto, novaQuantidade } = req.body;
-    const carrinho = req.session.carrinho || [];
-
-    carrinho.forEach(item => {
-        if (item.codigoProduto === codigoProduto) {
-            item.qtdeAddProduto = novaQuantidade;
-        }
-    });
-
-    req.session.carrinho = carrinho;
-    res.redirect('/carrinho');
-});
 
 // Rota para exibir o carrinho
 app.post('/carrinho', verificaAutenticacao, (req, res) => {

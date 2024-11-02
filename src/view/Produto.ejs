@@ -38,8 +38,8 @@
 <body>
     <div class="menu">
         <h2>Lista de Produtos</h2>
-        <form action="/add" method="post">
-            <% for (let i = 0; i < tabela.rowCount; i++) { %>   
+        <% for (let i = 0; i < tabela.rowCount; i++) { %>
+            <form action="/add" method="post">
                 <div class="produto">
                     <img src="../imagem/<%= tabela.rows[i].imagem %>" alt="<%= tabela.rows[i].descricao %>">
                     <div>
@@ -48,13 +48,13 @@
                         </a>
                         <p id="AddPreco" name="AddPreco">Preço: R$ <%= parseFloat(tabela.rows[i].preco).toFixed(2) %></p>
                         <p>Quantidade: <%= tabela.rows[i].qtde %></p>
-                        <input type="text" value="<%= tabela.rows[i].codigo %>" id="ADDcodigo" name="ADDcodigo">
+                        <input type="hidden" value="<%= tabela.rows[i].codigo %>" id="ADDcodigo" name="ADDcodigo">
                         <input type="number" min="1" id="ADDqtde" value="1" name="ADDqtde">
                         <input type="submit" value="ADD CARRINHO">
                     </div>
                 </div>
-            <% } %>
-        </form>
+            </form>
+        <% } %>
     </div>
 </body>
 </html>
