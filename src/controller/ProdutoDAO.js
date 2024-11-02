@@ -8,9 +8,9 @@ async listar(dep) {
     try {
         Banco.init();
         let tabela = await Banco.conexao.query("SELECT codigo, descricao, preco, qtde, imagem FROM produto WHERE coddep = $1", [departamento]); // Adicionei "FROM produto"
-        Banco.conexao.end();
+        Banco.close()
         return tabela;
-    } catch (erro) { 
+    } catch (erro) {
         console.log(erro);
     }
 }

@@ -10,6 +10,7 @@ const Carrinho = require('./src/model/Carrinho');
 const Cliente = require('./src/model/Cliente');
 
 const app = express();
+const porta = 3000
 
 // Configuração da pasta pública
 app.use(express.static(__dirname + '/public'));
@@ -130,16 +131,43 @@ app.post('/add', verificaAutenticacao, async function(req, res) {
 
 
 // Rota para exibir o carrinho
-app.post('/carrinho', verificaAutenticacao, (req, res) => {
-    const carrinho = req.session.carrinho || [];
-    res.render('carrinho', { carrinho });
+app.post('/adicionarCarrinho', async (req, res) => {
+    const codigo = parseInt(req.body.ADDcodigo)
+    const qtde = parseInt(req.body.ADDqtde)
+
+    if (!req.session.carrinho) {
+        req.session.carrinho = { produtos: {}, ordem: [] }
+    }
+
+    if (req.session.carrinho.produtos[codigo]) {
+        req.session.carrinho.produtos[codigo] += qtde
+    } else {
+        req.session.carrinho.produtos[codigo] = qtde
+        req.session.carrinho.ordem.push(codigo)
+    }
+    console.log('Produto ADD ao carrinho')
+    console.log('')
+    const pdao = new ProdutoDAO();
+    const produtosTemp = await pdao.listarPorCodigo(req.session.carrinho.ordem)
+    const produtos = {};
+    produtosTemp.rows.forEach(p => {
+        produtos[p.codigo] = p;
+    });
+
+    if (req.session.carrinho.produtos[codigo] > produtos[codigo].qtde) {
+        req.session.carrinho.produtos[codigo] -= 1;
+    }
 });
 
 // Inicialização do servidor
 app.listen(3000, (erro) => {
     if (erro) {
-        console.log("Erro ao iniciar o servidor: " + erro);
+        console.log('')
+        console.log("⚠️  Erro ao iniciar o servidor: " + erro);
+        console.log('')
     } else {
-        console.log("Servidor rodando na porta 3000");
+        console.log('')
+        console.log("✅  Servidor rodando na porta ", porta);
+        console.log('')
     }
 });

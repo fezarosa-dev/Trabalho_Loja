@@ -1,0 +1,9 @@
+{
+    "host": "127.0.0.1",
+    "port": 5432,
+    "database": "node",
+    "user": "postgres",
+    "password": "2121",
+    "porta": "3000"
+
+}

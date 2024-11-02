@@ -1,46 +1,159 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrinho de Compras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .carrinho-container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .counter-box {
+            display: flex;
+            align-items: center;
+        }
+        .counter-box button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 0 5px;
+        }
+        .counter-box button:hover {
+            background: #0056b3;
+        }
+        .resumo-compra {
+            margin-top: 30px;
+            border-top: 2px solid #ddd;
+            padding-top: 20px;
+        }
+        .resumo-compra-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .resumo-compra-body {
+            margin-bottom: 20px;
+        }
+        .finalizar-container {
+            text-align: center;
+        }
+        .finalizar-container input {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .finalizar-container input:hover {
+            background: #218838;
+        }
+    </style>
 </head>
 <body>
-    <h1>Carrinho de Compras</h1>
-    <% if (carrinho.length > 0) { %>
-        <table>
-            <thead>
-                <tr>
-                    <th>Produto</th>
-                    <th>Quantidade</th>
-                    <th>Preço</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% carrinho.forEach(item => { %>
+    <div class="carrinho-container">
+        <div class="carrinho-items">
+            <% let total = 0; %>
+            <% if (carrinho) { %>
+                <h1>Carrinho</h1>
+                <table id="caixaCarrinho">
+                    <thead>
                     <tr>
-                        <td><%= item.nomeProduto %></td>
-                        <td>
-                            <form action="/carrinho/atualizar" method="post">
-                                <input type="hidden" name="codigoProduto" value="<%= item.codigoProduto %>">
-                                <input type="number" name="novaQuantidade" value="<%= item.qtdeAddProduto %>" min="1">
-                                <button type="submit">Atualizar</button>
-                            </form>
-                        </td>
-                        <td>R$ <%= item.precoProduto %></td>
-                        <td>
-                            <form action="/carrinho/remover" method="post">
-                                <input type="hidden" name="codigoProduto" value="<%= item.codigoProduto %>">
-                                <button type="submit">Remover</button>
-                            </form>
-                        </td>
+                        <th>Item</th>
+                        <th>Preço</th>
+                        <th>Quantidade</th>
+                        <th>Total</th>
+                        <th>Ações</th>
                     </tr>
-                <% }) %>
-            </tbody>
-        </table>
-    <% } else { %>
-        <p>Seu carrinho está vazio.</p>
-    <% } %>
+                    </thead>
+                    <tbody id="idCarrinho">
+                        <% for (let i = 0; i < carrinho.ordem.length; i++) {
+                            const pos = carrinho.ordem[i];
+                            const p = produtos[pos];
+                            total += p.preco * carrinho.produtos[p.codigo]; %>
+                            <tr>
+                                <td>
+                                    <img src="../imagem/<%= p.imagem %>" width="100">
+                                    <%= p.descricao %>
+                                </td>
+                                <td>R$<%= p.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 }) %></td>
+                                <td>
+                                    <div class="counter-box">
+                                        <button onclick="mudarCarrinho('<%= i %>', 'Subtrair')">-</button>
+                                        <span class="counter-number"><%= carrinho.produtos[p.codigo] %></span>
+                                        <button onclick="mudarCarrinho('<%= i %>', 'Aumentar')">+</button>
+                                    </div>
+                                </td>
+                                <td>R$<%= (p.preco * carrinho.produtos[p.codigo]).toLocaleString('pt-BR', { minimumFractionDigits: 2 }) %></td>
+                                <td>
+                                    <button onclick="mudarCarrinho('<%= i %>', 'Remover')">X</button>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            <% } else { %>
+                <p style="text-align:center;">Carrinho vazio.</p>
+            <% } %>
+        </div>
+        <% if (carrinho) { %>
+            <div class="resumo-compra">
+                <div class="resumo-compra-header">Resumo da compra</div>
+                <div class="resumo-compra-body">
+                    <div style="display: flex; justify-content: space-between;">
+                        Subtotal
+                        <div id="idSubtotal">R$<%= total.toLocaleString('pt-BR', { minimumFractionDigits: 2 }) %></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        Frete
+                        <div>Gratuito</div>
+                    </div>
+                </div>
+                <div class="resumo-compra-total">
+                    <div style="display: flex; justify-content: space-between;">
+                        Total
+                        <div id="idTotal">R$<%= total.toLocaleString('pt-BR', { minimumFractionDigits: 2 }) %></div>
+                    </div>
+                </div>
+                <div class="finalizar-container">
+                    <form id="idFinalizarCompra" action="/finalizar" method="post">
+                        <input type="submit" value="Finalizar compra">
+                    </form>
+                </div>
+            </div>
+        <% } %>
+    </div>
 </body>
 </html>

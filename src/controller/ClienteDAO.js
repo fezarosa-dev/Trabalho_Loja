@@ -16,7 +16,7 @@ module.exports = class ClienteDAO {
             console.log("Erro ao gravar cliente:", erro)
             throw erro
         } finally {
-            Banco.conexao.end()
+            Banco.close()
         }
     }
 
@@ -40,7 +40,7 @@ module.exports = class ClienteDAO {
             console.log("Erro ao realizar login:", erro)
             throw erro
         } finally {
-            Banco.conexao.end()
+            Banco.close()
         }
     }
 }
