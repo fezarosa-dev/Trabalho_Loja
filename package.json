@@ -6,16 +6,10 @@
       "start": "nodemon --watch . --ext js --delay 0 server.js",
       "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "keywords": [
-      "loja",
-      "node",
-      "express",
-      "ejs",
-      "postgresql"
-    ],
-    "author": "Felipe Zanoni da Rosa",
-    "license": "Apache License 2.0",
-    "description": "Projeto de Linguagem e Técnica de Programação II - Prof. Dr. Prampero. Site de compras com três departamentos e produtos gerados pelo Node.js.",
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
     "dependencies": {
       "body-parser": "^1.20.3",
       "ejs": "^3.1.10",
