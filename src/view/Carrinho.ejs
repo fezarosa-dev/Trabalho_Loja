@@ -4,156 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrinho de Compras</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f8f9fa;
-        }
-        .carrinho-container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .counter-box {
-            display: flex;
-            align-items: center;
-        }
-        .counter-box button {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 4px;
-            margin: 0 5px;
-        }
-        .counter-box button:hover {
-            background: #0056b3;
-        }
-        .resumo-compra {
-            margin-top: 30px;
-            border-top: 2px solid #ddd;
-            padding-top: 20px;
-        }
-        .resumo-compra-header {
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .resumo-compra-body {
-            margin-bottom: 20px;
-        }
-        .finalizar-container {
-            text-align: center;
-        }
-        .finalizar-container input {
-            background: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        .finalizar-container input:hover {
-            background: #218838;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Link para seu CSS -->
 </head>
 <body>
-    <div class="carrinho-container">
-        <div class="carrinho-items">
-            <% let total = 0; %>
-            <% if (carrinho) { %>
-                <h1>Carrinho</h1>
-                <table id="caixaCarrinho">
-                    <thead>
+    <header>
+        <h1>Carrinho de Compras</h1>
+        <a href="/">Voltar à loja</a>
+    </header>
+    <main>
+        <% if (produtos.length > 0) { %>
+            <table>
+                <thead>
                     <tr>
-                        <th>Item</th>
+                        <th>Imagem</th>
+                        <th>Descrição</th>
                         <th>Preço</th>
                         <th>Quantidade</th>
-                        <th>Total</th>
-                        <th>Ações</th>
+                        <th>Ação</th>
                     </tr>
-                    </thead>
-                    <tbody id="idCarrinho">
-                        <% for (let i = 0; i < carrinho.ordem.length; i++) {
-                            const pos = carrinho.ordem[i];
-                            const p = produtos[pos];
-                            total += p.preco * carrinho.produtos[p.codigo]; %>
-                            <tr>
-                                <td>
-                                    <img src="../imagem/<%= p.imagem %>" width="100">
-                                    <%= p.descricao %>
-                                </td>
-                                <td>R$<%= p.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 }) %></td>
-                                <td>
-                                    <div class="counter-box">
-                                        <button onclick="mudarCarrinho('<%= i %>', 'Subtrair')">-</button>
-                                        <span class="counter-number"><%= carrinho.produtos[p.codigo] %></span>
-                                        <button onclick="mudarCarrinho('<%= i %>', 'Aumentar')">+</button>
-                                    </div>
-                                </td>
-                                <td>R$<%= (p.preco * carrinho.produtos[p.codigo]).toLocaleString('pt-BR', { minimumFractionDigits: 2 }) %></td>
-                                <td>
-                                    <button onclick="mudarCarrinho('<%= i %>', 'Remover')">X</button>
-                                </td>
-                            </tr>
-                        <% } %>
-                    </tbody>
-                </table>
-            <% } else { %>
-                <p style="text-align:center;">Carrinho vazio.</p>
-            <% } %>
-        </div>
-        <% if (carrinho) { %>
-            <div class="resumo-compra">
-                <div class="resumo-compra-header">Resumo da compra</div>
-                <div class="resumo-compra-body">
-                    <div style="display: flex; justify-content: space-between;">
-                        Subtotal
-                        <div id="idSubtotal">R$<%= total.toLocaleString('pt-BR', { minimumFractionDigits: 2 }) %></div>
-                    </div>
-                    <div style="display: flex; justify-content: space-between;">
-                        Frete
-                        <div>Gratuito</div>
-                    </div>
-                </div>
-                <div class="resumo-compra-total">
-                    <div style="display: flex; justify-content: space-between;">
-                        Total
-                        <div id="idTotal">R$<%= total.toLocaleString('pt-BR', { minimumFractionDigits: 2 }) %></div>
-                    </div>
-                </div>
-                <div class="finalizar-container">
-                    <form id="idFinalizarCompra" action="/finalizar" method="post">
-                        <input type="submit" value="Finalizar compra">
-                    </form>
-                </div>
+                </thead>
+                <tbody>
+                    <% produtos.forEach(produto => { %>
+                        <tr>
+                            <td><img src="<%= produto.imagem %>" alt="<%= produto.descricao %>" style="width: 50px;"></td>
+                            <td><%= produto.descricao %></td>
+                            <td>R$ <%= produto.preco.toFixed(2) %></td>
+                            <td>
+                                <form action="/atualiza-quantidade" method="POST">
+                                    <input type="hidden" name="codigo" value="<%= produto.codigo %>">
+                                    <input type="number" name="quantidade" value="<%= produto.qtdeCarrinho %>" min="1" required>
+                                    <button type="submit">Atualizar</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="/remove" method="POST">
+                                    <input type="hidden" name="codigo" value="<%= produto.codigo %>">
+                                    <button type="submit">Remover</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+            <div>
+                <a href="/finalizar-compra">Finalizar Compra</a> <!-- Link para finalizar a compra -->
             </div>
+        <% } else { %>
+            <p>Seu carrinho está vazio.</p>
+            <a href="/" target="pr">Continuar comprando</a>
         <% } %>
-    </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Sua Loja</p>
+    </footer>
 </body>
 </html>

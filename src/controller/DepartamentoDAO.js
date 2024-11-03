@@ -11,7 +11,11 @@ module.exports = class DepartamentoDAO {
             return tabela
         }
         catch (erro) {
-            console.log(erro)
+            console.log('')
+            console.log("==========================================================");
+            console.log(erro);
+            console.log("==========================================================");
+            console.log('')
         }
     }
 }

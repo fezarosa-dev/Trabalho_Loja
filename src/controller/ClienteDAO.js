@@ -13,7 +13,11 @@ module.exports = class ClienteDAO {
             )
             return res.rows[0].codigo
         } catch (erro) {
+            console.log('')
+            console.log("==========================================================");
             console.log("Erro ao gravar cliente:", erro)
+            console.log("==========================================================");
+            console.log('')
             throw erro
         } finally {
             Banco.close()
@@ -37,10 +41,15 @@ module.exports = class ClienteDAO {
             }
             return null
         } catch (erro) {
+            console.log('')
+            console.log("==========================================================");
             console.log("Erro ao realizar login:", erro)
+            console.log("==========================================================");
+            console.log('')
             throw erro
         } finally {
             Banco.close()
         }
     }
 }
+
