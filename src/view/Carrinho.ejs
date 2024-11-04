@@ -3,41 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho de Compras</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .produto {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 10px 0;
-            display: flex;
-            align-items: center;
-        }
-        .produto img {
-            max-width: 50px;
-            margin-right: 10px;
-        }
-        .produto h2 {
-            font-size: 18px;
-            margin: 0;
-        }
-        .produto p {
-            margin: 5px 0;
-        }
-    </style>
-    <script>
-        function verificar() {
-            const total = document.getElementById('totalprecooo');
-            const botao = document.getElementById('botao')
-            if (total.innerText === "0.00") { // use innerText para comparar o valor do elemento
-                botao.style.display = 'none'; // use display para esconder o elemento
-            }
-        }
-
-    </script>
+    <link rel="stylesheet" href="../syle/carrinho.css">
+    <script src="../script/carrinho.js"></script>
 </head>
 <body onload="verificar()">
     <h2>Carrinho de Compras</h2>

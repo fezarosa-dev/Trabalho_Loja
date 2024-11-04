@@ -1,0 +1,46 @@
+/* sucesso.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Cor de fundo clara */
+    color: #333; /* Cor do texto */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda a altura da tela */
+}
+
+.container {
+    background-color: #fff; /* Fundo branco para a caixa de mensagem */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px;
+    text-align: center; /* Centraliza o texto */
+    width: 300px; /* Largura fixa */
+}
+
+h1 {
+    font-size: 24px; /* Tamanho do título */
+    color: #4CAF50; /* Cor verde para o título */
+    margin-bottom: 15px; /* Espaçamento abaixo do título */
+}
+
+p {
+    font-size: 16px; /* Tamanho do texto do parágrafo */
+    margin-bottom: 20px; /* Espaçamento abaixo do parágrafo */
+}
+
+a {
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: #fff; /* Cor do texto do link */
+    background-color: #2196F3; /* Cor de fundo do botão */
+    padding: 10px 15px; /* Espaçamento interno do botão */
+    border-radius: 5px; /* Bordas arredondadas do botão */
+    transition: background-color 0.3s; /* Transição suave */
+}
+
+a:hover {
+    background-color: #1976D2; /* Cor de fundo ao passar o mouse */
+}
