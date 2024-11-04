@@ -7,11 +7,15 @@ module.exports = class DepartamentoDAO {
         try {
             Banco.init()
             let tabela = await Banco.conexao.query("SELECT codigo, nome FROM departamento order by 2")
-            Banco.conexao.end()
+            Banco.close()
             return tabela
         }
         catch (erro) {
-            console.log(erro)
+            console.log('')
+            console.log("==========================================================");
+            console.log(erro);
+            console.log("==========================================================");
+            console.log('')
         }
     }
 }
