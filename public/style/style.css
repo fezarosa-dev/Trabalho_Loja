@@ -1,4 +1,25 @@
-.menu{
-    text-decoration: none;
-    font-size: 1px;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+iframe {
+    border: none; /* Remove bordas do iframe */
+}
+
+.topo {
+    height: 9%; /* Altura do topo */
+    width: 100%; /* Largura do topo */
+}
+
+.menu {
+    width: 20%; /* Largura do menu */
+    height: 900px; /* Altura do menu */
+    float: left; /* Alinha o menu à esquerda */
+}
+
+.principal {
+    width: 79%; /* Largura do conteúdo principal */
+    height: 900px; /* Altura do conteúdo principal */
+    float: left; /* Alinha o conteúdo principal à esquerda */
 }

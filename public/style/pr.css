@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f7f9; /* Tom de cinza claro para um fundo mais suave */
+}
+
+header {
+    background-color: #3a7c60; /* Verde escuro para um tom mais moderno */
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 2em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra leve */
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.intro {
+    background-color: white;
+    padding: 30px;
+    margin: 20px 0;
+    border-radius: 10px; /* Bordas arredondadas mais suaves */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra mais evidente */
+    line-height: 1.6; /* Melhora a legibilidade */
+}
+
+.intro h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-top: 0;
+}
+
+.intro p {
+    color: #555;
+}
+
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background-color: #3a7c60; /* Cor combinando com o cabeçalho */
+    color: white;
+    font-size: 0.9em;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve na borda superior */
+}
+
+a {
+    color: #3a7c60;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #2e624d; /* Tom mais escuro ao passar o mouse */
+}
