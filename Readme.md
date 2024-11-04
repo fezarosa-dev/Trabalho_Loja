@@ -75,4 +75,3 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir um **pull reques
 
 ## Licença
 Este projeto é licenciado sob a [Apache License](LICENSE).
-
