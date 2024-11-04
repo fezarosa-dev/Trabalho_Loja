@@ -58,7 +58,7 @@ async buscarPorCodigo(codigo) {
     try {
         Banco.init();
         resultado = await Banco.conexao.query(
-            'SELECT * FROM produto WHERE codigo = $1',
+            'SELECT descricao, preco, qtde, imagem FROM produto WHERE codigo = $1',
             [codigo]
         );
 
@@ -70,17 +70,32 @@ async buscarPorCodigo(codigo) {
 
         return resultado.rows[0]; // Retorna o primeiro registro encontrado
     } catch (erro) {
-        console.log("");
         console.log("==========================================================");
         console.log(erro);
         console.log("==========================================================");
-        console.log("");
+        return null; // Retorna null em caso de erro
     } finally {
         Banco.close(); // Fecha a conexão no bloco finally
     }
-
-    return resultado; // Retorna o resultado ou null em caso de erro
 }
+async atualizarQuantidade(codigo, novaQuantidade) {
+    try {
+        Banco.init();
+        await Banco.conexao.query(
+            "UPDATE produto SET qtde = $1 WHERE codigo = $2",
+            [novaQuantidade, codigo]
+        );
+    } catch (erro) {
+        console.log("");
+        console.log("==========================================================");
+        console.log("ERRO AO ATUALIZAR QUANTIDADE DO PRODUTO", erro);
+        console.log("==========================================================");
+        console.log("");
+    } finally {
+        Banco.close();
+    }
+}
+
 
 
 };

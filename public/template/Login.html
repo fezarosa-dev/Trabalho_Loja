@@ -58,8 +58,13 @@
             background-color: #0056b3; /* Cor de fundo ao passar o mouse */
         }
     </style>
+    <script>
+        function log(){
+            document.getElementById('login').focus()
+        }
+    </script>
 </head>
-<body>
+<body onload="log()">
     <h1>Login no Sistema</h1>
     <form action="/login" method="post">
         <label for="login">Login:</label>

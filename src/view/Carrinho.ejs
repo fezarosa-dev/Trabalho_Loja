@@ -1,61 +1,74 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrinho de Compras</title>
-    <link rel="stylesheet" href="/css/styles.css"> <!-- Link para seu CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .produto {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        .produto img {
+            max-width: 50px;
+            margin-right: 10px;
+        }
+        .produto h2 {
+            font-size: 18px;
+            margin: 0;
+        }
+        .produto p {
+            margin: 5px 0;
+        }
+    </style>
+    <script>
+        function verificar() {
+            const total = document.getElementById('totalprecooo');
+            const botao = document.getElementById('botao')
+            if (total.innerText === "0.00") { // use innerText para comparar o valor do elemento
+                botao.style.display = 'none'; // use display para esconder o elemento
+            }
+        }
+
+    </script>
 </head>
-<body>
-    <header>
-        <h1>Carrinho de Compras</h1>
-        <a href="/">Voltar à loja</a>
-    </header>
-    <main>
-        <% if (produtos.length > 0) { %>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Imagem</th>
-                        <th>Descrição</th>
-                        <th>Preço</th>
-                        <th>Quantidade</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% produtos.forEach(produto => { %>
-                        <tr>
-                            <td><img src="<%= produto.imagem %>" alt="<%= produto.descricao %>" style="width: 50px;"></td>
-                            <td><%= produto.descricao %></td>
-                            <td>R$ <%= produto.preco.toFixed(2) %></td>
-                            <td>
-                                <form action="/atualiza-quantidade" method="POST">
-                                    <input type="hidden" name="codigo" value="<%= produto.codigo %>">
-                                    <input type="number" name="quantidade" value="<%= produto.qtdeCarrinho %>" min="1" required>
-                                    <button type="submit">Atualizar</button>
-                                </form>
-                            </td>
-                            <td>
-                                <form action="/remove" method="POST">
-                                    <input type="hidden" name="codigo" value="<%= produto.codigo %>">
-                                    <button type="submit">Remover</button>
-                                </form>
-                            </td>
-                        </tr>
-                    <% }); %>
-                </tbody>
-            </table>
+<body onload="verificar()">
+    <h2>Carrinho de Compras</h2>
+    <% for (const codigo in produtos) { %>
+        <div class="produto">
+            <img src="../imagem/<%= produtos[codigo].imagem %>" alt="<%= produtos[codigo].descricao %>">
             <div>
-                <a href="/finalizar-compra">Finalizar Compra</a> <!-- Link para finalizar a compra -->
+                <h2><%= produtos[codigo].descricao %></h2>
+                <p>Preço: R$ <%= parseFloat(produtos[codigo].preco).toFixed(2) %></p>
+                <p>Quantidade no Carrinho: <%= carrinho[codigo] %></p>
+                <p>Quantidade Disponível: <%= produtos[codigo].quantidadeDisponivel %></p>
+                <p>Preço Total: R$ <%= (produtos[codigo].preco * carrinho[codigo]).toFixed(2) %></p>
+
+                <form action="/update" method="post">
+                    <input type="hidden" value="<%= codigo %>" name="codigo">
+                    <input type="number" min="1" value="<%= carrinho[codigo] %>" name="quantidade">
+                    <input type="submit" value="Atualizar Quantidade">
+                </form>
+                <form action="/remove" method="post">
+                    <input type="hidden" value="<%= codigo %>" name="codigo">
+                    <input type="submit" value="Remover do Carrinho">
+                </form>
             </div>
-        <% } else { %>
-            <p>Seu carrinho está vazio.</p>
-            <a href="/" target="pr">Continuar comprando</a>
-        <% } %>
-    </main>
-    <footer>
-        <p>&copy; 2024 Sua Loja</p>
-    </footer>
+        </div>
+    <% } %>
+    <h3 style="display: inline;">Preço Total Geral: R$ </h3>
+    <h3 id="totalprecooo" style="display: inline;"><%= totalPreco !== undefined ? totalPreco.toFixed(2) : '0.00' %></h3>
+    <form action="/finalizar-compra" method="POST">
+        <button type="submit" id="botao">Finalizar Compra</button>
+    </form>
+
+
 </body>
 </html>
