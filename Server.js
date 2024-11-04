@@ -280,6 +280,7 @@ app.post("/remove", verificaAutenticacao, async function (req, res) {
 app.post("/update", verificaAutenticacao, async function (req, res) {
     const { codigo, quantidade } = req.body; // Captura os dados do corpo da requisição
     const carrinho = req.session.carrinho ? req.session.carrinho.produtos : {};
+    const prodDAO = new ProdutoDAO();
 
     // Inicializa totalPreco
     let totalPreco = 0;

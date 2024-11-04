@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+.menu {
+    font-size: 16px;
+}
+.produto {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+.produto img {
+    max-width: 50px;
+    margin-right: 10px;
+}
+.produto h2 {
+    font-size: 18px;
+    margin: 0;
+}
+.produto p {
+    margin: 5px 0;
+}
+.produto input[type="text"] {
+    display: none; /* Esconder input de descrição */
+}
