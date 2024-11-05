@@ -1,46 +1,115 @@
-/* sucesso.css */
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* Cor de fundo clara */
-    color: #333; /* Cor do texto */
+/* Estilo Geral */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100vh; /* Ocupa toda a altura da tela */
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #a6d6f5, #f5a6d6);
+    color: #333;
+    overflow: hidden; /* Para evitar a barra de rolagem com confetes */
 }
 
+/* Container Principal */
 .container {
-    background-color: #fff; /* Fundo branco para a caixa de mensagem */
-    border-radius: 8px; /* Bordas arredondadas */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    padding: 20px;
-    text-align: center; /* Centraliza o texto */
-    width: 300px; /* Largura fixa */
+    text-align: center;
+    background-color: #fff;
+    padding: 3rem 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    animation: fadeIn 0.8s ease-in-out;
 }
 
+/* Animação de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Título */
 h1 {
-    font-size: 24px; /* Tamanho do título */
-    color: #4CAF50; /* Cor verde para o título */
-    margin-bottom: 15px; /* Espaçamento abaixo do título */
+    font-size: 2rem;
+    color: #4caf50; /* Verde para sucesso */
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+/* Mensagem */
 p {
-    font-size: 16px; /* Tamanho do texto do parágrafo */
-    margin-bottom: 20px; /* Espaçamento abaixo do parágrafo */
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #555;
 }
 
+/* Link de Retorno */
 a {
-    text-decoration: none; /* Remove o sublinhado do link */
-    color: #fff; /* Cor do texto do link */
-    background-color: #2196F3; /* Cor de fundo do botão */
-    padding: 10px 15px; /* Espaçamento interno do botão */
-    border-radius: 5px; /* Bordas arredondadas do botão */
-    transition: background-color 0.3s; /* Transição suave */
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #4caf50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
 a:hover {
-    background-color: #1976D2; /* Cor de fundo ao passar o mouse */
+    background-color: #45a049;
+}
+
+/* Confetes */
+.confetti {
+    position: fixed;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    opacity: 0.8;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fall linear forwards, colorChange 1s linear infinite;
+}
+
+/* Animação de queda dos confetes */
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Animação de mudança de cor */
+@keyframes colorChange {
+    0% {
+        background-color: #ff5733;
+    }
+    25% {
+        background-color: #ffd700;
+    }
+    50% {
+        background-color: #4caf50;
+    }
+    75% {
+        background-color: #1e90ff;
+    }
+    100% {
+        background-color: #ff1493;
+    }
 }

@@ -47,4 +47,4 @@ module.exports = class Item {
     get codvenda() {
         return this.#codvenda;
     }
-}
+};

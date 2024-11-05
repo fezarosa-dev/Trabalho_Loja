@@ -1,30 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/produto.css">
-</head>
-<body>
-    <div class="menu">
-        <h2>Lista de Produtos</h2>
-        <% for (let i = 0; i < tabela.rowCount; i++) { %>
-            <form action="/add" method="post">
-                <div class="produto">
-                    <img src="../imagem/<%= tabela.rows[i].imagem %>" alt="<%= tabela.rows[i].descricao %>">
-                    <div>
-                        <a href="/ListarProdutos/<%= tabela.rows[i].codigo %>" target="principal">
-                            <h2><%= tabela.rows[i].descricao %></h2>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../style/produto.css" />
+        <title>Lista de Produtos</title>
+    </head>
+    <body>
+        <div class="menu">
+            <h2>Lista de Produtos</h2>
+            <div class="produtos-container">
+                <% for (let i = 0; i < tabela.rowCount; i++) { %>
+                <form action="/add" method="post" class="produto">
+                    <img
+                        src="../imagem/<%= tabela.rows[i].imagem %>"
+                        alt="<%= tabela.rows[i].descricao %>"
+                        class="produto-imagem"
+                    />
+                    <div class="produto-info">
+                        <a
+                            href="/ListarProdutos/<%= tabela.rows[i].codigo %>"
+                            target="principal"
+                        >
+                            <h3><%= tabela.rows[i].descricao %></h3>
                         </a>
-                        <p id="AddPreco" name="AddPreco">Preço: R$ <%= parseFloat(tabela.rows[i].preco).toFixed(2) %></p>
-                        <p>Quantidade: <%= tabela.rows[i].qtde %></p>
-                        <input type="hidden" value="<%= tabela.rows[i].codigo %>" id="ADDcodigo" name="ADDcodigo">
-                        <input type="number" min="1" id="ADDqtde" value="1" name="ADDqtde">
-                        <input type="submit" value="ADD CARRINHO">
+                        <p class="produto-preco">
+                            Preço: R$ <%=
+                            parseFloat(tabela.rows[i].preco).toFixed(2) %>
+                        </p>
+                        <p class="produto-quantidade">
+                            Quantidade: <%= tabela.rows[i].qtde %>
+                        </p>
+                        <input
+                            type="hidden"
+                            value="<%= tabela.rows[i].codigo %>"
+                            name="ADDcodigo"
+                        />
+                        <input
+                            type="number"
+                            min="1"
+                            value="1"
+                            name="ADDqtde"
+                            class="quantidade-input"
+                        />
+                        <input
+                            type="submit"
+                            value="ADD CARRINHO"
+                            class="btn-adicionar"
+                        />
                     </div>
-                </div>
-            </form>
-        <% } %>
-    </div>
-</body>
+                </form>
+                <% } %>
+            </div>
+        </div>
+    </body>
 </html>

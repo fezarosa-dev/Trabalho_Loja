@@ -38,7 +38,7 @@ input[type="password"] {
 input[type="submit"] {
     width: 100%; /* Largura total do botão */
     padding: 10px; /* Espaçamento interno do botão */
-    background-color: #007BFF; /* Cor de fundo do botão */
+    background-color: #007bff; /* Cor de fundo do botão */
     border: none; /* Remove borda do botão */
     border-radius: 4px; /* Bordas arredondadas do botão */
     color: white; /* Cor do texto do botão */

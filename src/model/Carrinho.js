@@ -8,7 +8,9 @@ module.exports = class Carrinho {
     // Método para adicionar um produto ao carrinho
     adicionarProduto(codigoProduto, qtdeAddProduto, precoProduto) {
         // Verifica se o produto já está no carrinho
-        const produtoExistente = this.#itens.find(item => item.codigoProduto === codigoProduto);
+        const produtoExistente = this.#itens.find(
+            (item) => item.codigoProduto === codigoProduto
+        );
 
         if (produtoExistente) {
             // Se o produto já existe, atualiza a quantidade
@@ -18,14 +20,16 @@ module.exports = class Carrinho {
             this.#itens.push({
                 codigoProduto,
                 qtdeAddProduto,
-                precoProduto
+                precoProduto,
             });
         }
     }
 
     // Método para remover um produto do carrinho
     removerProduto(codigoProduto) {
-        this.#itens = this.#itens.filter(item => item.codigoProduto !== codigoProduto);
+        this.#itens = this.#itens.filter(
+            (item) => item.codigoProduto !== codigoProduto
+        );
     }
 
     // Método para obter todos os itens do carrinho
@@ -36,7 +40,7 @@ module.exports = class Carrinho {
     // Método para calcular o total do carrinho
     calcularTotal() {
         return this.#itens.reduce((total, item) => {
-            return total + (item.qtdeAddProduto * item.precoProduto);
+            return total + item.qtdeAddProduto * item.precoProduto;
         }, 0);
     }
-}
+};

@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/login.css">
-    <script>
-        function log(){
-            document.getElementById('login').focus()
-        }
-    </script>
-</head>
-<body onload="log()">
-    <h1>Login no Sistema</h1>
-    <form action="/login" method="post">
-        <label for="login">Login:</label>
-        <input type="text" id="login" name="txtLogin" required>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../style/login.css" />
+        <script>
+            function log() {
+                document.getElementById("login").focus();
+            }
+        </script>
+    </head>
+    <body onload="log()">
+        <h1>Login no Sistema</h1>
+        <form action="/login" method="post">
+            <label for="login">Login:</label>
+            <input type="text" id="login" name="txtLogin" required />
 
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="txtSenha" required>
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="txtSenha" required />
 
-        <input type="submit" name="b1" value="Logar">
-    </form>
-</body>
+            <input type="submit" name="b1" value="Logar" />
+        </form>
+    </body>
 </html>

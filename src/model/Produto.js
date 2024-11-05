@@ -1,10 +1,10 @@
 module.exports = class Produto {
-    #codigo
-    #descricao
-    #preco
-    #qtde
-    #imagem
-    #coddep
+    #codigo;
+    #descricao;
+    #preco;
+    #qtde;
+    #imagem;
+    #coddep;
 
     constructor() {
         this.#codigo = -1;
@@ -39,4 +39,4 @@ module.exports = class Produto {
     get coddep() {
         return this.#coddep;
     }
-}
+};

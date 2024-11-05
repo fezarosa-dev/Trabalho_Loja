@@ -9,7 +9,6 @@ const ProdutoDAO = require("./src/controller/ProdutoDAO");
 const Cliente = require("./src/model/Cliente");
 const Venda = require("./src/model/Cliente");
 const VendaDAO = require("./src/controller/VendaDAO");
-const ItemDAO = require("./src/controller/ItemDAO");
 
 const app = express();
 const porta = 3000;
@@ -77,7 +76,6 @@ app.post("/login", async function (req, res) {
     }
 });
 
-// Rota de menu, com verificação de autenticação
 app.get("/menu", async function (req, res) {
     const dao = new DepartamentoDAO();
     const tabela = await dao.listar();
@@ -214,6 +212,7 @@ app.post("/carrinho", verificaAutenticacao, async function (req, res) {
             if (busca) {
                 // Adiciona o produto ao carrinhoEJS
                 carrinhoEJS[codigo] = busca;
+                console.log(carrinhoEJS[codigo])
                 // Calcula o preço total
                 totalPreco += carrinho[codigo] * parseFloat(busca.preco); // Assumindo que busca.preco é um número
             } else {
@@ -231,6 +230,9 @@ app.post("/carrinho", verificaAutenticacao, async function (req, res) {
         totalPreco: totalPreco,
     });
 });
+
+
+
 
 app.post("/remove", verificaAutenticacao, async function (req, res) {
     const codigoProduto = req.body.codigo; // Obtém o código do produto a ser removido
@@ -322,24 +324,69 @@ app.post("/update", verificaAutenticacao, async function (req, res) {
     res.render("carrinho", { produtos: carrinhoEJS, carrinho, totalPreco }); // Passa totalPreco para o EJS
 });
 //      FALTA ARRUMAR O FINALIZAR
-/*app.post("/finalizar-compra", verificaAutenticacao, async function (req, res) {
-    const usuario = req.session.user;
-    const venda = new Venda();
-    const itens = [];
-    const vendaDAO = new VendaDAO();
-    venda.total = req.session.totalPreco;
-    venda.codCli = usuario.id;
-    const codivend = vendaDAO.salvar(venda)
-    for (const codigo in req.session.carrinho) {
+app.post("/finalizar-compra", async function (req, res) {
+    const prodDAO = new ProdutoDAO();
+    try {
+        const usuario = req.session.user;
+
+        // Verifica se o usuário está logado e o código do cliente está presente
+        if (!usuario || !usuario) {
+            return res.status(400).send("Usuário não autenticado ou código do cliente ausente.");
+        }
+
+        const vendaDAO = new VendaDAO();
+        const venda = {
+            total: req.session.totalPreco,
+            codcli: parseInt(req.session.user), // Passa o código do cliente corretamente
+            data: new Date(),
+            itens: [],
+        };
+
+        // Prepara os itens da venda a partir dos produtos no carrinho
+        for (const codigo in req.session.carrinho.produtos) {
+            const quantidade = req.session.carrinho.produtos[codigo];
+            const produto = await prodDAO.buscarPorCodigo(codigo); // Busca detalhes do produto pelo código
+
+            venda.itens.push({
+                qtde: quantidade,
+                precounit: produto.preco,
+                codproduto: codigo,
+            });
+        }
+
+        // Salva a venda e obtém o código gerado para a venda
+        const codigoVenda = await vendaDAO.salvar(venda);
+
+        if (codigoVenda) {
+            // Limpa o carrinho e reseta o total após a finalização da compra
+            req.session.carrinho = null;
+            req.session.totalPreco = 0;
+
+            res.render('sucesso')
+        } else {
+            res.status(500).send("Erro ao finalizar a compra.");
+        }
+    } catch (erro) {
+        console.error("Erro na rota /finalizar-compra:", erro);
+        res.status(500).send("Erro ao finalizar a compra.");
     }
 });
 
+
 app.get("/sucesso", function (req, res) {
-    res.render("sucesso", {
-        mensagem: "Compra finalizada com sucesso! Obrigado pela sua compra.",
-    });
+    res.render("/sucesso");
 });
-*/
+app.get('/logout', (req, res) => {
+    // Se desejar destruir toda a sessão
+    req.session.destroy((err) => {
+      if (err) {
+        return res.redirect('/error'); // Redireciona em caso de erro
+      }
+      res.clearCookie('connect.sid'); // Limpa o cookie da sessão
+    });
+  });
+
+
 // Inicialização do servidor
 app.listen(3000, "0.0.0.0", (erro) => {
     if (erro) {

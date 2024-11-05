@@ -1,28 +1,85 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
-}
-.menu {
-    font-size: 16px;
-}
-.produto {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-}
-.produto img {
-    max-width: 50px;
-    margin-right: 10px;
-}
-.produto h2 {
-    font-size: 18px;
+    background-color: #f4f4f4;
     margin: 0;
+    padding: 20px;
 }
-.produto p {
-    margin: 5px 0;
+
+.menu {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
 }
-.produto input[type="text"] {
-    display: none; /* Esconder input de descrição */
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.produtos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.produto {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    margin: 15px;
+    padding: 15px;
+    width: calc(33% - 30px); /* Três produtos por linha */
+    transition: transform 0.2s;
+}
+
+.produto:hover {
+    transform: translateY(-5px);
+}
+
+.produto-imagem {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.produto-info {
+    text-align: center;
+}
+
+h3 {
+    color: #007bff;
+    margin: 10px 0;
+}
+
+.produto-preco {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.produto-quantidade {
+    color: #666;
+}
+
+.quantidade-input {
+    width: 60px;
+    margin: 10px 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-adicionar {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-adicionar:hover {
+    background-color: #218838;
 }
