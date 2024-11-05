@@ -122,7 +122,7 @@ app.get("/ListarProdutos/:departamento", async function (req, res) {
     novoCarrinho.qtdeAddProduto = parseInt(req.body.ADDqtde); // Use o nome correto do campo
 
     // Verifique se os dados são válidos
-    if (
+    if (.
         !isNaN(novoCarrinho.codigoProduto) &&
         !isNaN(novoCarrinho.qtdeAddProduto) &&
         novoCarrinho.qtdeAddProduto > 0
