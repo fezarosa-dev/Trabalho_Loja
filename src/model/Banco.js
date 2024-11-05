@@ -14,7 +14,9 @@ class Banco {
             });
             await this.conexao.connect();
             console.log("");
-            console.log("==========================================================");
+            console.log(
+                "=========================================================="
+            );
             console.log(`✔  Conexão estabelecida com sucesso!`);
             console.log(`👉 Host: ${this.conexao.host}`);
             console.log(`👉 Banco de Dados: ${this.conexao.database}`);
@@ -22,7 +24,9 @@ class Banco {
             console.log(`👉 Porta: ${this.conexao.port}`);
         } catch (erro) {
             console.error(`⚠️ Erro de conexão: ${erro.message}`);
-            console.log("==========================================================");
+            console.log(
+                "=========================================================="
+            );
             console.log("");
         }
     }
@@ -31,12 +35,16 @@ class Banco {
         if (this.conexao) {
             await this.conexao.end();
             console.log(`❌  Conexão encerrada com sucesso!`);
-            console.log("==========================================================");
+            console.log(
+                "=========================================================="
+            );
             console.log("");
         } else {
             console.log("");
             console.log(`⚠️ Nenhuma conexão ativa para encerrar.`);
-            console.log("==========================================================");
+            console.log(
+                "=========================================================="
+            );
             console.log("");
         }
     }

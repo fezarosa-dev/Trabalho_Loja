@@ -18,7 +18,7 @@ module.exports = class ProdutoDAO {
             console.log(
                 "=========================================================="
             );
-            console.log('ERRO AO LISTAR PRODUTOS',erro);
+            console.log("ERRO AO LISTAR PRODUTOS", erro);
             console.log(
                 "=========================================================="
             );
@@ -42,9 +42,13 @@ module.exports = class ProdutoDAO {
             }
         } catch (erro) {
             console.log("");
-            console.log("==========================================================");
+            console.log(
+                "=========================================================="
+            );
             console.log(erro);
-            console.log("==========================================================");
+            console.log(
+                "=========================================================="
+            );
             console.log("");
         } finally {
             Banco.close(); // Fecha a conexão no bloco finally
@@ -52,50 +56,55 @@ module.exports = class ProdutoDAO {
 
         return quantidade; // Retorna a quantidade encontrada ou null
     }
-// Exemplo do método buscarPorCodigo no ProdutoDAO
-async buscarPorCodigo(codigo) {
-    let resultado = null; // Inicializa o resultado como null
-    try {
-        Banco.init();
-        resultado = await Banco.conexao.query(
-            'SELECT descricao, preco, qtde, imagem FROM produto WHERE codigo = $1',
-            [codigo]
-        );
+    // Exemplo do método buscarPorCodigo no ProdutoDAO
+    async buscarPorCodigo(codigo) {
+        let resultado = null; // Inicializa o resultado como null
+        try {
+            Banco.init();
+            resultado = await Banco.conexao.query(
+                "SELECT descricao, preco, qtde, imagem FROM produto WHERE codigo = $1",
+                [codigo]
+            );
 
-        // Verifica se a consulta retornou algum resultado
-        if (resultado.rows.length === 0) {
-            console.log(`Produto com código ${codigo} não encontrado.`);
-            return null; // Retorna null se o produto não for encontrado
+            // Verifica se a consulta retornou algum resultado
+            if (resultado.rows.length === 0) {
+                console.log(`Produto com código ${codigo} não encontrado.`);
+                return null; // Retorna null se o produto não for encontrado
+            }
+
+            return resultado.rows[0]; // Retorna o primeiro registro encontrado
+        } catch (erro) {
+            console.log(
+                "=========================================================="
+            );
+            console.log(erro);
+            console.log(
+                "=========================================================="
+            );
+            return null; // Retorna null em caso de erro
+        } finally {
+            Banco.close(); // Fecha a conexão no bloco finally
         }
-
-        return resultado.rows[0]; // Retorna o primeiro registro encontrado
-    } catch (erro) {
-        console.log("==========================================================");
-        console.log(erro);
-        console.log("==========================================================");
-        return null; // Retorna null em caso de erro
-    } finally {
-        Banco.close(); // Fecha a conexão no bloco finally
     }
-}
-async atualizarQuantidade(codigo, novaQuantidade) {
-    try {
-        Banco.init();
-        await Banco.conexao.query(
-            "UPDATE produto SET qtde = $1 WHERE codigo = $2",
-            [novaQuantidade, codigo]
-        );
-    } catch (erro) {
-        console.log("");
-        console.log("==========================================================");
-        console.log("ERRO AO ATUALIZAR QUANTIDADE DO PRODUTO", erro);
-        console.log("==========================================================");
-        console.log("");
-    } finally {
-        Banco.close();
+    async atualizarQuantidade(codigo, novaQuantidade) {
+        try {
+            Banco.init();
+            await Banco.conexao.query(
+                "UPDATE produto SET qtde = $1 WHERE codigo = $2",
+                [novaQuantidade, codigo]
+            );
+        } catch (erro) {
+            console.log("");
+            console.log(
+                "=========================================================="
+            );
+            console.log("ERRO AO ATUALIZAR QUANTIDADE DO PRODUTO", erro);
+            console.log(
+                "=========================================================="
+            );
+            console.log("");
+        } finally {
+            Banco.close();
+        }
     }
-}
-
-
-
 };

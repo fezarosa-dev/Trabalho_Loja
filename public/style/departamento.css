@@ -7,7 +7,7 @@ body {
 
 .menu {
     font-size: 14px; /* Tamanho da fonte ajustado */
-    background-color: #007BFF; /* Cor de fundo do menu */
+    background-color: #007bff; /* Cor de fundo do menu */
     padding: 20px; /* Espaçamento interno do menu */
     border-radius: 8px; /* Bordas arredondadas */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
