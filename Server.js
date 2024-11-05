@@ -136,7 +136,7 @@ app.get("/ListarProdutos/:departamento", async function (req, res) {
         );
         res.send("Produto adicionado ao carrinho com sucesso!"); // Resposta ao cliente
     } else {
-        res.send("Dados inválidos!"); // Resposta de erro
+        res.send("Dados inválidos!"); // Resposta de erro.
     }
 });
 */
