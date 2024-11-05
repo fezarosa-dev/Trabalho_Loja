@@ -68,7 +68,8 @@ Este projeto é uma loja online desenvolvida em Node.js, HTML, CSS e PostgreSQL.
    npm start 
    ```
 6. **Acesse a aplicação**:
-   Abra o navegador e acesse `http://localhost:3000`.
+    Abra o navegador e digite http://localhost:3000 na barra de endereços.
+    Para acessar a página a partir de outro computador na mesma rede, abra o navegador nesse PC e insira https://ipDoPcHost:3000, substituindo ipDoPcHost pelo endereço IP do     computador que está hospedando a aplicação.
 
 ## Contribuição
 Contribuições são bem-vindas! Sinta-se à vontade para abrir um **pull request** ou relatar problemas.
