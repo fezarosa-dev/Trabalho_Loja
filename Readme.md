@@ -63,11 +63,12 @@ Este projeto é uma loja online desenvolvida em Node.js, HTML, CSS e PostgreSQL.
        codvenda int NOT NULL REFERENCES venda(codigo) ON UPDATE CASCADE
    );
    ```
-4. **Inicie o servidor**:
+5. **Adicione produtos e departamento no Banco de Dados [DADOS](/sql/dados.sql)
+5. **Inicie o servidor**:
    ```bash
    npm start 
    ```
-6. **Acesse a aplicação**:
+7. **Acesse a aplicação**:
     Abra o navegador e digite http://localhost:3000 na barra de endereços.
     Para acessar a página a partir de outro computador na mesma rede, abra o navegador nesse PC e insira https://ipDoPcHost:3000, substituindo ipDoPcHost pelo endereço IP do     computador que está hospedando a aplicação.
 
