@@ -10,7 +10,7 @@ class Banco {
                 port: 5432,
                 database: "node",
                 user: "postgres",
-                password: "2121",
+                password: "ifsp",
             });
             await this.conexao.connect();
             console.log("");
