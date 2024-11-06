@@ -82,7 +82,9 @@ a:hover {
     pointer-events: none;
     animation: fall linear forwards, colorChange 1s linear infinite;
 }
-
+body{
+    background-color: bisque;
+}
 /* Animação de queda dos confetes */
 @keyframes fall {
     0% {

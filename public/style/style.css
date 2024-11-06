@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    overflow:initial;
 }
 
 iframe {
@@ -9,7 +10,7 @@ iframe {
 
 .topo {
     height: 9%; /* Altura do topo */
-    width: 100%; /* Largura do topo */
+    width: 99%; /* Largura do topo */
 }
 
 .menu {
@@ -22,4 +23,7 @@ iframe {
     width: 79%; /* Largura do conteúdo principal */
     height: 900px; /* Altura do conteúdo principal */
     float: left; /* Alinha o conteúdo principal à esquerda */
+}
+body{
+    background-color: bisque;
 }

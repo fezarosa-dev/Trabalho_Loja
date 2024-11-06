@@ -38,7 +38,9 @@ h2 {
 .produto:hover {
     transform: translateY(-5px);
 }
-
+body{
+    background-color: bisque;
+}
 .produto-imagem {
     max-width: 100%;
     border-radius: 8px;

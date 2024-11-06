@@ -18,7 +18,9 @@ form {
     border-radius: 8px; /* Bordas arredondadas */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
-
+body{
+    background-color: bisque;
+}
 label {
     display: block; /* Faz o label ocupar toda a largura */
     margin-bottom: 8px; /* Espaçamento abaixo do label */

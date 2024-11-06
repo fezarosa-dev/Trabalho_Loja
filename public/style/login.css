@@ -24,7 +24,9 @@ label {
     margin-bottom: 8px; /* Espaçamento abaixo do label */
     color: #555; /* Cor do texto do label */
 }
-
+body{
+    background-color: bisque;
+}
 input[type="text"],
 input[type="password"] {
     width: 100%; /* Largura total do input */

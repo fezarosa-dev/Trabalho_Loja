@@ -22,7 +22,9 @@ body {
     border-radius: 5px; /* Bordas arredondadas dos links */
     transition: background-color 0.3s; /* Transição suave para o fundo */
 }
-
+body{
+    background-color: bisque;
+}
 .menu a:hover {
     background-color: #0056b3; /* Cor de fundo ao passar o mouse */
 }
