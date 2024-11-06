@@ -24,7 +24,9 @@ body {
     font-size: 26px;
     font-weight: 700;
 }
-
+body{
+    background-color: bisque;
+}
 .topo a {
     text-decoration: none;
     color: white;

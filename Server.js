@@ -66,7 +66,7 @@ app.post("/login", async function (req, res) {
         if (cliente) {
             req.session.usuario = cliente; // Certifique-se de que cliente tenha os dados corretos
             req.session.user = cliente.codigo;
-            res.redirect("/menu"); // Redireciona para o menu
+            res.sendFile(__dirname+"/public/template/logado.html"); // Redireciona para o menu
         } else {
             req.session.usuario = null;
             res.send("Erro no login/senha");

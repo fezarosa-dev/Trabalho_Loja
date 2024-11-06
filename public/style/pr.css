@@ -28,7 +28,9 @@ header {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra mais evidente */
     line-height: 1.6; /* Melhora a legibilidade */
 }
-
+body{
+    background-color: bisque;
+}
 .intro h2 {
     font-size: 1.8em;
     color: #333;
