@@ -63,7 +63,7 @@ Este projeto é uma loja online desenvolvida em Node.js, HTML, CSS e PostgreSQL.
        codvenda int NOT NULL REFERENCES venda(codigo) ON UPDATE CASCADE
    );
    ```
-5. **Adicione produtos e departamento no Banco de Dados [DADOS](/sql/dados.sql)
+5. **Adicione produtos e departamento no Banco de Dados [DADOS](/SQL/Dados.sql)
 5. **Inicie o servidor**:
    ```bash
    npm start 
