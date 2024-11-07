@@ -30,7 +30,6 @@ Caso identifique uma vulnerabilidade, solicitamos que siga nossa política de di
 
 Para uma segurança máxima, recomendamos que os usuários sigam as práticas abaixo:
 
-<<<<<<< HEAD
 - **Atualizações Regulares:** Mantenha sempre o sistema na versão mais recente.
 - **Autenticação de Dois Fatores:** Ative a autenticação de dois fatores sempre que disponível para maior segurança.
 - **Senhas Fortes:** Use senhas complexas e armazene-as de forma segura.
@@ -40,4 +39,3 @@ Essas práticas ajudam a manter a integridade do sistema e a segurança dos dado
 - Atualizar regularmente para a versão mais recente.
 - Ativar autenticação de dois fatores, sempre que possível.
 - Utilizar senhas fortes e armazená-las de maneira segura.
->>>>>>> 86cf724bf2f495992eea88429beef3e2c549f93b
