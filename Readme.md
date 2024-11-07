@@ -28,7 +28,7 @@ Este projeto é uma loja online desenvolvida em Node.js, HTML, CSS e PostgreSQL.
    ```
 3. **Configuração do Banco de Dados**:
    - Crie um banco de dados PostgreSQL chamado `node`.
-   - Configure as informações nessesarias no arquivo [loginBD.sql](/SQL/loginBG.json) que esta na pasta SQL
+   - Configure as informações nessesarias no arquivo [Banco.js](/src/model/Banco.js) que esta na pasta src/model
    - Execute os seguintes comandos SQL para criar as tabelas necessárias:
    ```sql
    CREATE TABLE cliente (
@@ -63,12 +63,14 @@ Este projeto é uma loja online desenvolvida em Node.js, HTML, CSS e PostgreSQL.
        codvenda int NOT NULL REFERENCES venda(codigo) ON UPDATE CASCADE
    );
    ```
-4. **Inicie o servidor**:
+5. **Adicione produtos e departamento no Banco de Dados [DADOS](/SQL/Dados.sql)
+5. **Inicie o servidor**:
    ```bash
    npm start 
    ```
-6. **Acesse a aplicação**:
-   Abra o navegador e acesse `http://localhost:3000`.
+7. **Acesse a aplicação**:
+    Abra o navegador e digite http://localhost:3000 na barra de endereços.
+    Para acessar a página a partir de outro computador na mesma rede, abra o navegador nesse PC e insira https://ipDoPcHost:3000, substituindo ipDoPcHost pelo endereço IP do     computador que está hospedando a aplicação.
 
 ## Contribuição
 Contribuições são bem-vindas! Sinta-se à vontade para abrir um **pull request** ou relatar problemas.
