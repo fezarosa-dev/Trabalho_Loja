@@ -66,7 +66,7 @@ Este projeto é uma loja online desenvolvida em Node.js, HTML, CSS e PostgreSQL.
 
         ```
 
-3.  \*\*Adicione produtos e departamento no Banco de Dados [DADOS](/SQL/adicionar_dados.sql)
+3.  **Adicione produtos e departamento no Banco de Dados [DADOS](/SQL/adicionar_dados.sql)**
 4.  **Inicie o servidor**:
     ```bash
     npm start
