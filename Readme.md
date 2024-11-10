@@ -29,6 +29,7 @@ Este projeto é uma loja online desenvolvida em Node.js, HTML, CSS e PostgreSQL.
      cls
      echo Sua projeto foi instalado com sucesso
      pause
+     
     ```
 2.  **Configuração do Banco de Dados**: Crie um banco de dados PostgreSQL chamado **node**.
 3. **Configure as informações nessesarias no arquivo [Banco.js](/src/model/Banco.js) que esta na pasta src/model**
