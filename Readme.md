@@ -22,7 +22,7 @@ Este projeto é uma loja online desenvolvida em Node.js, HTML, CSS e PostgreSQL.
 
 1.  **Clone o repositório e instale as dependencias**:
     ```bash
-    color 2
+     color 2
      git clone https://github.com/fezarosa-dev/Trabalho_Loja.git
      cd Trabalho_Loja
      npm install
