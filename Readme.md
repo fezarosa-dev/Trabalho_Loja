@@ -27,7 +27,7 @@ Este projeto é uma loja online desenvolvida em Node.js, HTML, CSS e PostgreSQL.
      cd Trabalho_Loja
      npm install
      cls
-     echo Sua projeto foi instalado com sucesso
+     echo Seu projeto foi instalado com sucesso
      pause
      
     ```
