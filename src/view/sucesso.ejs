@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/style/sucesso.css" />
+        <title>Compra Realizada com Sucesso!</title>
+    </head>
+    <body onload="document.getElementById('logoutForm').submit();">
+        <div class="container">
+            <h1>Compra Realizada com Sucesso!</h1>
+            <a href="/template/pr.html">Voltar para a Página Inicial</a>
+        </div>
+        <form action="/logout" method="get">
+            <input type="submit" hidden id="logoutForm" />
+        </form>
+        <!-- Script de Confetes -->
+        <script src="/script/confetti.js"></script>
+    </body>
+</html>

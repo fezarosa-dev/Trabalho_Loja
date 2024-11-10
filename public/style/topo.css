@@ -1,0 +1,57 @@
+/* Importando uma fonte mais moderna do Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+body {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007bff;
+    padding: 60px 40px;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.topo h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+}
+body{
+    background-color: bisque;
+}
+.topo a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    margin-left: 15px;
+    transition: color 0.3s ease;
+}
+
+.topo a:hover {
+    color: #ffd700; /* Cor de destaque ao passar o mouse */
+}
+
+#carrinho {
+    background-color: #28a745;
+    border: none;
+    padding: 10px 25px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 25px; /* Bordas mais arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra no botão */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#carrinho:hover {
+    background-color: #218838;
+    transform: scale(1.05); /* Leve aumento ao passar o mouse */
+}

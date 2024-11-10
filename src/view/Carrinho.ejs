@@ -1,46 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho de Compras</title>
-</head>
-<body>
-    <h1>Carrinho de Compras</h1>
-    <% if (carrinho.length > 0) { %>
-        <table>
-            <thead>
-                <tr>
-                    <th>Produto</th>
-                    <th>Quantidade</th>
-                    <th>Preço</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% carrinho.forEach(item => { %>
-                    <tr>
-                        <td><%= item.nomeProduto %></td>
-                        <td>
-                            <form action="/carrinho/atualizar" method="post">
-                                <input type="hidden" name="codigoProduto" value="<%= item.codigoProduto %>">
-                                <input type="number" name="novaQuantidade" value="<%= item.qtdeAddProduto %>" min="1">
-                                <button type="submit">Atualizar</button>
-                            </form>
-                        </td>
-                        <td>R$ <%= item.precoProduto %></td>
-                        <td>
-                            <form action="/carrinho/remover" method="post">
-                                <input type="hidden" name="codigoProduto" value="<%= item.codigoProduto %>">
-                                <button type="submit">Remover</button>
-                            </form>
-                        </td>
-                    </tr>
-                <% }) %>
-            </tbody>
-        </table>
-    <% } else { %>
-        <p>Seu carrinho está vazio.</p>
-    <% } %>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../style/carrinho.css" />
+        <script src="../script/carrinho.js"></script>
+    </head>
+    <body onload="verificar()">
+        <h2>Carrinho de Compras</h2>
+        <% for (const codigo in produtos) { %>
+        <div class="produto">
+            <img
+                src="../imagem/<%= produtos[codigo].imagem %>"
+                alt="<%= produtos[codigo].descricao %>"
+            />
+            <div>
+                <h2><%= produtos[codigo].descricao %></h2>
+                <p>
+                    Preço: R$ <%= parseFloat(produtos[codigo].preco).toFixed(2)
+                    %>
+                </p>
+                <p>Quantidade no Carrinho: <%= carrinho[codigo] %></p>
+                <p>Quantidade Disponível: <%= produtos[codigo].qtde %></p>
+                <p>
+                    Preço Total: R$ <%= (produtos[codigo].preco *
+                    carrinho[codigo]).toFixed(2) %>
+                </p>
+
+                <form action="/update" method="post">
+                    <input type="hidden" value="<%= codigo %>" name="codigo" />
+                    <input
+                        type="number"
+                        min="1"
+                        value="<%= carrinho[codigo] %>"
+                        name="quantidade"
+                    />
+                    <input type="submit" value="Atualizar Quantidade" />
+                </form>
+                <form action="/remove" method="post">
+                    <input type="hidden" value="<%= codigo %>" name="codigo" />
+                    <input type="submit" value="Remover do Carrinho" />
+                </form>
+            </div>
+        </div>
+        <% } %>
+        <h3 style="display: inline">Preço Total Geral: R$</h3>
+        <h3 id="totalprecooo" style="display: inline">
+            <%= totalPreco !== undefined ? totalPreco.toFixed(2) : '0.00' %>
+        </h3>
+        <form action="/finalizar-compra" method="POST">
+            <button type="submit" id="botao">Finalizar Compra</button>
+        </form>
+    </body>
 </html>

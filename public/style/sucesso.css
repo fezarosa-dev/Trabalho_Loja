@@ -1,0 +1,117 @@
+/* Estilo Geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #a6d6f5, #f5a6d6);
+    color: #333;
+    overflow: hidden; /* Para evitar a barra de rolagem com confetes */
+}
+
+/* Container Principal */
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 3rem 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Animação de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Título */
+h1 {
+    font-size: 2rem;
+    color: #4caf50; /* Verde para sucesso */
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Mensagem */
+p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+/* Link de Retorno */
+a {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #4caf50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+a:hover {
+    background-color: #45a049;
+}
+
+/* Confetes */
+.confetti {
+    position: fixed;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    opacity: 0.8;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fall linear forwards, colorChange 1s linear infinite;
+}
+body{
+    background-color: bisque;
+}
+/* Animação de queda dos confetes */
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Animação de mudança de cor */
+@keyframes colorChange {
+    0% {
+        background-color: #ff5733;
+    }
+    25% {
+        background-color: #ffd700;
+    }
+    50% {
+        background-color: #4caf50;
+    }
+    75% {
+        background-color: #1e90ff;
+    }
+    100% {
+        background-color: #ff1493;
+    }
+}
