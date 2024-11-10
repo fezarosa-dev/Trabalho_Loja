@@ -7,25 +7,25 @@
         "first-start": "npm install && nodemon --watch . --ext js --delay 0 server.js"
     },
     "keywords": [
-    "loja online",
-    "e-commerce",
-    "Node.js",
-    "Express",
-    "PostgreSQL",
-    "EJS",
-    "sessão",
-    "carrinho de compras",
-    "loja virtual",
-    "web development",
-    "backend"
-]
-,
+        "loja online",
+        "e-commerce",
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "EJS",
+        "sessão",
+        "carrinho de compras",
+        "loja virtual",
+        "web development",
+        "backend"
+    ],
     "author": "Felipe Zanoni da Rosa",
     "license": "Apache License",
     "description": "Projeto de loja online desenvolvido com Node.js, utilizando Express, EJS, e PostgreSQL.",
     "dependencies": {
         "body-parser": "^1.20.3",
         "dotenv": "^16.4.5",
+        "editorconfig": "^2.0.0",
         "ejs": "^3.1.10",
         "express": "^4.21.1",
         "express-session": "^1.18.1",
@@ -35,5 +35,5 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/fezarosa-dev/Trabalho_Loja.git"
-      }
+    }
 }

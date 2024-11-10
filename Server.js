@@ -1,3 +1,15 @@
+const editorconfig = require('editorconfig');
+const path = require('path');
+
+const filePath = path.join(__dirname, 'server.js');
+
+(async () => {
+  console.log(await editorconfig.parse(filePath, {files: []}));
+})();
+
+
+
+
 const express = require("express");
 const session = require("express-session");
 const bodyParser = require("body-parser");
