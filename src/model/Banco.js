@@ -20,7 +20,7 @@ class Banco {
                 port: 5432,
                 database: "node", // Troque o nome do banco se necessário
                 user: "postgres", // Troque o usuário se necessário
-                password: "2121", // Troque a senha se necessário
+                password: "ifsp", // Troque a senha se necessário
             });
             await this.conexao.connect();
             console.log("");

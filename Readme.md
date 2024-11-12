@@ -22,16 +22,14 @@ Este projeto é uma loja online desenvolvida em Node.js, HTML, CSS e PostgreSQL.
 
 1.  **Clone o repositório e instale as dependencias**:
     ```bash
-     @echo off
      color 2
      git clone https://github.com/fezarosa-dev/Trabalho_Loja.git
      cd Trabalho_Loja
      npm install
      cls
-     echo Sua projeto foi instalado com sucesso
+     echo Seu projeto foi instalado com sucesso
      pause
-     cls
-
+     
     ```
 2.  **Configuração do Banco de Dados**: Crie um banco de dados PostgreSQL chamado **node**.
 3. **Configure as informações nessesarias no arquivo [Banco.js](/src/model/Banco.js) que esta na pasta src/model**
