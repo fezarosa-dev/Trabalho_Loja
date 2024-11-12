@@ -1,6 +1,6 @@
 # Integrantes:
-1.**Felipe Zanoni da Rosa**
-2.**Otavio Silva Souza**
+1. **Felipe Zanoni da Rosa**
+2. **Otavio Silva Souza**
 
 # Trabalho_Loja
 
