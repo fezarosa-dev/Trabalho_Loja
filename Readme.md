@@ -1,3 +1,7 @@
+# Integrantes:
+1.**Felipe Zanoni da Rosa**
+2.**Otavio Silva Souza**
+
 # Trabalho_Loja
 
 Este projeto é uma loja online desenvolvida em Node.js, HTML, CSS e PostgreSQL. O sistema permite que os usuários naveguem por diferentes departamentos de produtos, adicionem itens ao carrinho de compras e finalizem a compra.
