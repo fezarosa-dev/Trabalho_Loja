@@ -5,7 +5,7 @@ module.exports = class DepartamentoDAO {
     // Listando Dados
     async listar() {
         try {
-            Banco.init();
+            Banco.init()
             let tabela = await Banco.conexao.query(
                 "SELECT codigo, nome FROM departamento order by 2"
             );
