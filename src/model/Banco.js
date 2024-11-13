@@ -1,10 +1,4 @@
-const express = require("express");
 const { Client } = require("pg");
-
-const app = express();
-const port = 3000;
-
-app.use(express.json());
 
 // Classe Banco para gerenciar a conexão com o banco de dados
 class Banco {
