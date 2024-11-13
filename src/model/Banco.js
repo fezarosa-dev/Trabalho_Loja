@@ -1,10 +1,4 @@
-const express = require("express");
 const { Client } = require("pg");
-
-const app = express();
-const port = 3000;
-
-app.use(express.json());
 
 // Classe Banco para gerenciar a conexão com o banco de dados
 class Banco {
@@ -20,7 +14,7 @@ class Banco {
                 port: 5432,
                 database: "node", // Troque o nome do banco se necessário
                 user: "postgres", // Troque o usuário se necessário
-                password: "ifsp", // Troque a senha se necessário
+                password: "2121", // Troque a senha se necessário
             });
             await this.conexao.connect();
             console.log("");
