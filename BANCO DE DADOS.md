@@ -1,5 +1,4 @@
-- **Database system:** MySQL
-## Table structure
+- **Database system:** PG
 
 ### cliente
 
